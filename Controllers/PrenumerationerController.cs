@@ -1,11 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using PrenumerationerApi.Models;
 
+namespace PrenumerationerApi.Controllers;
+
 [ApiController]
 [Route("api/[controller]")]
 public class PrenumerationerController : ControllerBase
 {
-    private static List<Prenumeration> _prenumerationer = new();
+    private static readonly List<Prenumeration> _prenumerationer = new()
+    {
+        new Prenumeration { Id = 1, ServiceName = "Netflix", Note = "Månadsplan", StartDate = new DateOnly(2025, 1, 1), IsActive = true },
+        new Prenumeration { Id = 2, ServiceName = "Spotify", Note = "Årsplan", StartDate = new DateOnly(2024, 6, 1), EndDate = new DateOnly(2025, 6, 1), IsActive = false }
+    };
 
     [HttpGet]
     public IActionResult GetAll()
@@ -36,7 +42,20 @@ public class PrenumerationerController : ControllerBase
         if (item is null) return NotFound();
 
         item.ServiceName = updated.ServiceName;
+        item.Note = updated.Note;
+        item.StartDate = updated.StartDate;
+        item.EndDate = updated.EndDate;
         item.IsActive = updated.IsActive;
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        var item = _prenumerationer.FirstOrDefault(p => p.Id == id);
+        if (item is null) return NotFound();
+
+        _prenumerationer.Remove(item);
         return NoContent();
     }
 }
