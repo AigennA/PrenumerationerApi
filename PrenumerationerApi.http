@@ -1,6 +1,41 @@
 @PrenumerationerApi_HostAddress = http://localhost:5175
 
-GET {{PrenumerationerApi_HostAddress}}/weatherforecast/
+GET {{PrenumerationerApi_HostAddress}}/api/prenumerationer
 Accept: application/json
+
+###
+
+GET {{PrenumerationerApi_HostAddress}}/api/prenumerationer/1
+Accept: application/json
+
+###
+
+POST {{PrenumerationerApi_HostAddress}}/api/prenumerationer
+Content-Type: application/json
+
+{
+  "serviceName": "Viaplay",
+  "note": "Sport-paket",
+  "startDate": "2025-08-15",
+  "endDate": null,
+  "isActive": true
+}
+
+###
+
+PUT {{PrenumerationerApi_HostAddress}}/api/prenumerationer/1
+Content-Type: application/json
+
+{
+  "serviceName": "Netflix",
+  "note": "Standard med reklam",
+  "startDate": "2025-01-01",
+  "endDate": null,
+  "isActive": true
+}
+
+###
+
+DELETE {{PrenumerationerApi_HostAddress}}/api/prenumerationer/2
 
 ###
