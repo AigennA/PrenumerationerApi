@@ -13,4 +13,8 @@ public class Prenumeration
     public DateOnly? StartDate { get; set; }
     public DateOnly? EndDate { get; set; }
     public bool IsActive { get; set; }
+
+    public string? LogoUrl { get; set; }
+    public string? DocumentUrl { get; set; }
+    public string? DocumentName { get; set; }
 }
