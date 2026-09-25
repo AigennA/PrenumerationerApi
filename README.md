@@ -46,7 +46,7 @@ som enklast testas i Swagger.
 ## Tekniska val
 - **Data sparas i en lista i minnet** i stället för en databas. Det räcker för uppgiften
   och gör att projektet kan startas direkt utan databasinstallation. Datan återställs vid omstart.
-- **CORS** är konfigurerat för http://localhost:5173 så att webbappen får anropa API:et
+- **CORS** är konfigurerat för http://localhost:5173 (webbappen) och http://localhost:8081 (mobilappen när den körs i webbläsaren med Expo)
   från en annan port.
 - **DateOnly** används för start- och slutdatum eftersom en prenumeration bara behöver
   ett datum, inte en tid.

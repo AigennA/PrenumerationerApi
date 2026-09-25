@@ -11,7 +11,7 @@ builder.Services.AddSingleton<FileStorage>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowWebApp", policy =>
-        policy.WithOrigins("http://localhost:5173")
+        policy.WithOrigins("http://localhost:5173", "http://localhost:8081")
               .AllowAnyHeader()
               .AllowAnyMethod());
 });
